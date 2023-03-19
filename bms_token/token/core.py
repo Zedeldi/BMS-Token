@@ -2,8 +2,7 @@
 
 from typing import Optional, Type
 
-from bms_token.controller import BaseController
-from bms_token.controller.wrapper import OATHWrapper
+from bms_token.controller import BaseController, NativeController
 
 
 class BMSToken:
@@ -14,7 +13,7 @@ class BMSToken:
         secret: str,
         iteration: int = 0,
         digits: int = 6,
-        controller: Type[BaseController] = OATHWrapper,
+        controller: Type[BaseController] = NativeController,
     ) -> None:
         """Initialise BMSToken instance."""
         self.secret = secret.upper()
