@@ -16,7 +16,7 @@ The passcode used to verify the secret is the 5th, 10th, 15th, 20th, 25th and 30
 
 The method for generating HOTP tokens can be found in `OATHController.GenerateHOTPPassword`.
 
-### Database interface
+### Database Interface
 
 A Python interface to the Secure-IT Token SQLite3 database can be found in `bms_token.db`.
 
@@ -24,7 +24,13 @@ The database can be found in the following location on Android:
 
 `/data/data/uk.co.bmsnotts.mobilesecureit/files/LocalDB.db3`
 
-## Build
+## Python
+
+A command-line interface in Python is provided:
+
+  - `python -m bms_token.cli`
+
+## C# 
 
 To use the C# command-line interface, compile the modified source.
 
@@ -45,17 +51,13 @@ Compile `src/OATHController.cs` with Mono:
 
 ### Python Wrapper
 
-A Python wrapper for the C# classes is found in `bms_token.wrapper`.
+A Python wrapper (requires [`pythonnet`](https://pypi.org/project/pythonnet/)) for the C# classes is found in `bms_token.controller.wrapper`.
 
 Compile `src/OATHController.cs` with Mono as a library:
  
   - `mcs -t:library OATHController.cs`
 
-Then copy the built DLL to `bms_token/wrapper/bin/`.
-
-A command-line interface for the wrapper is also provided:
-
-  - `python -m bms_token`
+Then copy the built DLL to `bms_token/controller/wrapper/bin/`.
 
 ## Credits
 

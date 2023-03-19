@@ -13,11 +13,6 @@ User = namedtuple("User", ["id", "pin"])
 UserToken = namedtuple("UserToken", ["id", "seed", "length", "index"])
 
 
-def hex_encode(n: int) -> str:
-    """Return hex-encoding of int n."""
-    return hex(n)[2:].upper()
-
-
 class DB:
     """Class to model data about a BMS token from Secure-IT database."""
 
