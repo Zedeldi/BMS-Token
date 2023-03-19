@@ -18,8 +18,8 @@ def hex_encode(n: int) -> str:
     return hex(n)[2:].upper()
 
 
-class BMSToken:
-    """Class to model data about a BMS token."""
+class DB:
+    """Class to model data about a BMS token from Secure-IT database."""
 
     def __init__(self, database: str) -> None:
         """Initialise instance of BMS token."""
@@ -59,6 +59,6 @@ class BMSToken:
 
 if __name__ == "__main__":
     database = "LocalDB.db3"
-    bms_token = BMSToken(database)
+    bms_token = DB(database)
     print(f"Seed: {bms_token.seed}\nPIN: {bms_token.pin}")
     print(f"Length: {bms_token.length}\nIndex: {bms_token.index}")
