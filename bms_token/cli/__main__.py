@@ -5,7 +5,7 @@ from bms_token.token import BMSToken
 
 
 def main() -> None:
-    """Main entry-point for BMS token."""
+    """Start CLI interface for BMS Token."""
     parser = get_parser()
     args = parser.parse_args()
 
