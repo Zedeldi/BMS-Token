@@ -26,7 +26,11 @@ The database can be found in the following location on Android:
 
 ## Python
 
-A command-line interface in Python is provided:
+A graphical interface can be found in `bms_token.gui` and run using:
+
+  - `python -m bms_token.gui`
+
+A command-line interface is also provided:
 
   - `python -m bms_token.cli`
 
