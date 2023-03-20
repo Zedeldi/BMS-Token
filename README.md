@@ -1,6 +1,6 @@
 # BMS-Token
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/Zedeldi/BMS-Token?style=flat-square)](https://github.com/Zedeldi/BMS-Token/commits)
+[![GitHub license](https://img.shields.io/github/license/Zedeldi/BMS-Token?style=flat-square)](https://github.com/Zedeldi/BMS-Token/blob/master/LICENSE) [![GitHub last commit](https://img.shields.io/github/last-commit/Zedeldi/BMS-Token?style=flat-square)](https://github.com/Zedeldi/BMS-Token/commits) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg?style=flat-square)](https://github.com/psf/black)
 
 BMS/Secure-IT Token OATHController.
 
@@ -62,6 +62,12 @@ Compile `src/OATHController.cs` with Mono as a library:
   - `mcs -t:library OATHController.cs`
 
 Then copy the built DLL to `bms_token/controller/wrapper/bin/`.
+
+## Licence
+
+The Python package `bms_token` is licensed by the GPL-3.0.
+
+All source code in `src` is derived from libraries found in `uk.co.bmsnotts.mobilesecureit.apk`, with an added `BMSToken` class to provide a command-line interface.
 
 ## Credits
 
