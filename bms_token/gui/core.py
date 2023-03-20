@@ -23,7 +23,7 @@ class BMSTokenGUI(QWidget):
     def __init__(self, token: Optional[BMSToken] = None) -> None:
         """Initialise window with graphical elements."""
         super().__init__()
-        self.settings = QSettings("bms_token", "gui")
+        self.settings = QSettings("bms-token", "gui")
         self.token = token
         while not self.token:
             self.token = self.loadToken()
