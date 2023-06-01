@@ -162,3 +162,18 @@ cython_debug/
 # Compiled binaries
 *.dll
 *.exe
+
+# Arch Linux Package
+*.tar
+*.tar.*
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+
+pkg/
+src/
