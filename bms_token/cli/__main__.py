@@ -14,18 +14,23 @@ def main() -> None:
     if args.command == "generate":
         if args.iteration < 0:
             raise ValueError("Iteration cannot be negative.")
-        print(f"Secret: {bms_token.secret}")
+        if not args.quiet:
+            print(f"Secret: {bms_token.secret}")
         if args.range:
             for i in range(0, args.iteration + 1):
-                print(f"#{i}: {bms_token.at(i, args.digits)}")
+                token = bms_token.at(i, args.digits)
+                print(f"#{i}: {token}" if not args.quiet else f"{token}")
         else:
             token = bms_token.at(args.iteration, args.digits)
-            print(f"#{args.iteration}: {token}")
+            print(f"#{args.iteration}: {token}" if not args.quiet else f"{token}")
     elif args.command == "verify":
         match = bms_token.verify_passcode(args.passcode)
-        print(f"Secret: {bms_token.secret}")
-        print(f"Passcode: {args.passcode.upper()} (Expected: {bms_token.passcode})")
-        print(f"Match: {match}")
+        if args.quiet:
+            print(match)
+        else:
+            print(f"Secret: {bms_token.secret}")
+            print(f"Passcode: {args.passcode.upper()} (Expected: {bms_token.passcode})")
+            print(f"Match: {match}")
 
 
 if __name__ == "__main__":

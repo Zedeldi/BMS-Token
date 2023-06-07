@@ -12,6 +12,7 @@ def get_parser() -> ArgumentParser:
     )
 
     parser.add_argument("secret", help="secret key")
+    parser.add_argument("-q", "--quiet", action="store_true", help="output less text")
 
     subparsers = parser.add_subparsers(dest="command", required=True)
     gen_parser = subparsers.add_parser(
