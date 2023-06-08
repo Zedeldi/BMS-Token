@@ -2,7 +2,7 @@
 
 pkgname=bms-token-git
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="BMS/Secure-IT Token OATHController."
 arch=("any")
 url="https://github.com/Zedeldi/BMS-Token"
