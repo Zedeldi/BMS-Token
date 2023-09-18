@@ -23,6 +23,13 @@ class BMSToken:
         self.digits = digits
         self.controller = controller
 
+    def __repr__(self) -> str:
+        """Return string representation of instance."""
+        return (
+            f"{self.__class__.__name__}"
+            f"(secret='{self.secret}', iteration={self.iteration}, digits={self.digits})"
+        )
+
     def gen_hotp_token(self) -> str:
         """Return HOTP at current iteration and increment counter."""
         token = self.controller.gen_hotp_token(self.secret, self.iteration, self.digits)
