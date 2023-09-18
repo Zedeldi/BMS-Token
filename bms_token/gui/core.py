@@ -3,9 +3,10 @@
 from typing import Optional
 
 from PyQt5.QtCore import QSettings, Qt
-from PyQt5.QtGui import QCloseEvent
+from PyQt5.QtGui import QCloseEvent, QGuiApplication
 from PyQt5.QtWidgets import (
     QHBoxLayout,
+    QInputDialog,
     QLabel,
     QMessageBox,
     QPushButton,
@@ -58,6 +59,16 @@ class BMSTokenGUI(QWidget):
         )
         controlLayout.addWidget(settingsButton)
 
+        syncButton = QPushButton("Sync")
+        syncButton.clicked.connect(lambda: self.syncToken())
+        controlLayout.addWidget(syncButton)
+
+        copyButton = QPushButton("Copy")
+        copyButton.clicked.connect(
+            lambda: QGuiApplication.clipboard().setText(self.tokenLabel.text())
+        )
+        controlLayout.addWidget(copyButton)
+
         closeButton = QPushButton("Close")
         closeButton.clicked.connect(self.close)
         controlLayout.addWidget(closeButton)
@@ -74,6 +85,20 @@ class BMSTokenGUI(QWidget):
             return None
         self.titleLabel.setText(f"Token #{self.token.iteration}:")
         self.tokenLabel.setText(self.token.gen_hotp_token())
+
+    def syncToken(self) -> None:
+        """Sync token from input box."""
+        if not self.token:
+            return None
+        token = QInputDialog.getText(self, "Sync Token", "Current token:")[0]
+        if not token:
+            return None
+        status = self.token.sync(token)
+        if not status:
+            QMessageBox.critical(self, "Sync Failed", "Unable to sync token.")
+            return None
+        self.saveToken()
+        self.generateToken()
 
     def saveToken(self) -> None:
         """Store current configuration in persistent QSettings."""
