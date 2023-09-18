@@ -8,6 +8,8 @@ from bms_token.controller import BaseController, NativeController
 class BMSToken:
     """Class to handle BMS token methods and attributes."""
 
+    SYNC_WINDOW: int = 20
+
     def __init__(
         self,
         secret: str,
@@ -32,6 +34,18 @@ class BMSToken:
         return self.controller.gen_hotp_token(
             self.secret, iteration, digits or self.digits
         )
+
+    def sync(self, token: str) -> bool:
+        """Sync iteration of token and return status."""
+        i = self.iteration
+        s = self.SYNC_WINDOW
+        tokens = [self.at(i, self.digits) for i in range(i, i + s)]
+        try:
+            idx = tokens.index(token)
+            self.iteration += idx
+            return True
+        except ValueError:
+            return False
 
     @property
     def passcode(self) -> str:
